@@ -11,6 +11,12 @@ import DistribusiPage from "./pages/DistribusiPage";
 import PenggunaPage from "./pages/PenggunaPage";
 import LaporanPage from "./pages/LaporanPage";
 import PengaturanPage from "./pages/PengaturanPage";
+// Dapur
+import DapurPage from "./pages/dapur/page";
+import DapurMenu from "./pages/dapur/menu/page";
+import DapurMenuKhusus from "./pages/dapur/menu-khusus/page";
+import DapurNutritionCalc from "./pages/dapur/nutrition-calc/page";
+import DapurPO from "./pages/dapur/po/page";
 import "./App.css";
 
 function App() {
@@ -29,6 +35,15 @@ function App() {
         <div className="flex-1 flex flex-col overflow-hidden">
           <Topbar onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
           <Routes>
+            {/* DAPUR */}
+            <Route path="/dapur" element={<DapurPage />} />
+            <Route path="/dapur/menu" element={<DapurMenu />} />
+            <Route path="/dapur/menu-khusus" element={<DapurMenuKhusus />} />
+            <Route
+              path="/dapur/nutrition-calc"
+              element={<DapurNutritionCalc />}
+            />
+            <Route path="/dapur/po" element={<DapurPO />} />
             <Route path="/" element={<MainContent />} />
             <Route path="/bahan-baku" element={<BahanBakuPage />} />
             <Route path="/produksi" element={<ProduksiPage />} />
