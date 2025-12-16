@@ -128,11 +128,10 @@ export default function MenuWizard({
   const isMet = isNutritionMet(validation);
 
   const handleNext = () => {
-    if (state.currentDay < DAYS.length - 1 && isMet) {
+    if (state.currentDay < DAYS.length - 1) {
       setState((prev) => ({
         ...prev,
         currentDay: prev.currentDay + 1,
-        completedDays: [...new Set([...prev.completedDays, prev.currentDay])],
       }));
     }
   };
@@ -170,7 +169,7 @@ export default function MenuWizard({
           overflow-hidden
           rounded-2xl 
           shadow-[0_20px_60px_rgba(0,0,0,0.4)]
-          bg-white/40 
+          bg-white/80 
           backdrop-blur-xl
           border border-white/20
           flex flex-col
@@ -222,7 +221,7 @@ export default function MenuWizard({
                 <div className="text-sm text-slate-900 font-medium mb-2">
                   Progress
                 </div>
-                <div className="w-full bg-slate-200 rounded-full h-3 overflow-hidden">
+                <div className="w-full bg-slate-500 rounded-full h-3 overflow-hidden">
                   <div
                     className="h-full bg-gradient-to-r from-teal-400 via-emerald-400 to-green-500 transition-all"
                     style={{ width: `${progressPercentage}%` }}
@@ -244,7 +243,6 @@ export default function MenuWizard({
                       onClick={() =>
                         setState((p) => ({ ...p, currentDay: idx }))
                       }
-                      disabled={idx > state.currentDay + 1}
                       className={`px-4 py-2 rounded-full text-sm font-semibold transition
                         ${
                           isCurr
@@ -465,27 +463,19 @@ export default function MenuWizard({
                   {/* NAV BUTTONS */}
                   <div className="mt-6 flex gap-2">
                     <Button
-                      variant="ghost"
                       onClick={() =>
                         setState((p) => ({
                           ...p,
                           currentDay: Math.max(0, p.currentDay - 1),
                         }))
                       }
-                      disabled={state.currentDay === 0}
-                      className="flex-1"
                     >
                       ← Sebelumnya
                     </Button>
 
                     {state.currentDay < DAYS.length - 1 ? (
-                      <Button
-                        variant="primary"
-                        disabled={!isMet}
-                        onClick={handleNext}
-                        className="flex-1"
-                      >
-                        Lanjut <FaChevronRight />
+                      <Button disabled={!isMet} onClick={handleNext}>
+                        Lanjut
                       </Button>
                     ) : (
                       <Button

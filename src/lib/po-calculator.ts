@@ -1,3 +1,59 @@
+export type MenuItem = {
+  id: string;
+  ingredientId: string;
+  name: string;
+  gramPerServing: number; // grams per recipient
+  unit?: string;
+};
+
+export type Menu = {
+  id: string;
+  name: string;
+  items: MenuItem[];
+};
+
+export type RecipientGroup = {
+  id: string;
+  name: string;
+  count: number;
+};
+
+export type RequirementLine = {
+  ingredientId: string;
+  ingredientName: string;
+  totalGram: number;
+  totalKg: number;
+};
+
+export function calcRequirements(
+  menu: Menu,
+  recipients: RecipientGroup[]
+): RequirementLine[] {
+  const totalRecipients = recipients.reduce(
+    (s, r) => s + Math.max(0, Math.floor(r.count)),
+    0
+  );
+
+  const byIngredient: Record<string, RequirementLine> = {};
+
+  for (const item of menu.items) {
+    const totalGram = (item.gramPerServing || 0) * totalRecipients;
+    if (!byIngredient[item.ingredientId]) {
+      byIngredient[item.ingredientId] = {
+        ingredientId: item.ingredientId,
+        ingredientName: item.name,
+        totalGram: 0,
+        totalKg: 0,
+      };
+    }
+    byIngredient[item.ingredientId].totalGram += totalGram;
+  }
+
+  return Object.values(byIngredient).map((r) => ({
+    ...r,
+    totalKg: Math.round((r.totalGram / 1000) * 100) / 100,
+  }));
+}
 // Purchase Order Calculator Library
 
 export interface POCalculationResult {

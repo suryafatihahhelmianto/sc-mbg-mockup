@@ -1,7 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Topbar from "./components/Topbar";
 import MainContent from "./components/MainContent";
@@ -17,6 +22,11 @@ import DapurMenu from "./pages/dapur/menu/page";
 import DapurMenuKhusus from "./pages/dapur/menu-khusus/page";
 import DapurNutritionCalc from "./pages/dapur/nutrition-calc/page";
 import DapurPO from "./pages/dapur/po/page";
+import AkuntanPage from "./pages/akuntan/page";
+import AkuntanOrderToPO from "./pages/akuntan/order-to-po/page";
+// Akuntan bookkeeping route now redirects to /keuangan
+import AkuntanStock from "./pages/akuntan/stock/page";
+import KeuanganPage from "./pages/keuangan/page";
 import "./App.css";
 
 function App() {
@@ -44,6 +54,14 @@ function App() {
               element={<DapurNutritionCalc />}
             />
             <Route path="/dapur/po" element={<DapurPO />} />
+            <Route path="/akuntan" element={<AkuntanPage />} />
+            <Route path="/akuntan/order-to-po" element={<AkuntanOrderToPO />} />
+            <Route
+              path="/akuntan/bookkeeping"
+              element={<Navigate to="/keuangan" replace />}
+            />
+            <Route path="/keuangan" element={<KeuanganPage />} />
+            <Route path="/akuntan/stock" element={<AkuntanStock />} />
             <Route path="/" element={<MainContent />} />
             <Route path="/bahan-baku" element={<BahanBakuPage />} />
             <Route path="/produksi" element={<ProduksiPage />} />

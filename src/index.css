@@ -16,7 +16,8 @@ body,
 }
 
 body {
-  background: linear-gradient(135deg, #0f172a 0%, #134e5e 50%, #0f172a 100%);
-  color: #fff;
+  /* Let the app container control the page background; use a neutral dark text color for readability on light backgrounds */
+  background: none;
+  color: #0f172a; /* slate-800 */
   overflow: hidden;
 }
