@@ -8,6 +8,7 @@ import {
   FiBarChart,
   FiSettings,
 } from "react-icons/fi";
+import { FaUtensils, FaCalculator, FaUserCheck } from "react-icons/fa";
 import { useNavigate, useLocation } from "react-router-dom";
 import React from "react";
 
@@ -28,17 +29,15 @@ export default function Sidebar({
   const location = useLocation();
 
   const menuItems = [
-    { icon: FiHome, label: "Dasbor Utama", id: "dashboard", path: "/" },
-    { icon: FiBox, label: "Bahan Baku", id: "bahan-baku", path: "/bahan-baku" },
-    { icon: FiTruck, label: "Produksi", id: "produksi", path: "/produksi" },
+    { icon: FaUtensils, label: "Dapur", id: "dapur", path: "/dapur" },
+    { icon: FaCalculator, label: "Akuntan", id: "akuntan", path: "/akuntan" },
+    { icon: FiTruck, label: "Aslap", id: "aslap", path: "/aslap" },
     {
-      icon: FiTruck,
-      label: "Distribusi",
-      id: "distribusi",
-      path: "/distribusi",
+      icon: FaUserCheck,
+      label: "Penerima Manfaat",
+      id: "penerima-manfaat",
+      path: "/penerima-manfaat",
     },
-    { icon: FiUsers, label: "Pengguna", id: "pengguna", path: "/pengguna" },
-    { icon: FiBarChart, label: "Laporan", id: "laporan", path: "/laporan" },
   ];
 
   const isActive = (path: string) => location.pathname === path;

@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import Bookkeeping from "../../components/akuntan/Bookkeeping";
-import { Card, CardContent } from "../../components/dapur/card";
+import Bookkeeping from "../../../components/akuntan/Bookkeeping";
+import { Card, CardContent } from "../../../components/dapur/card";
 
 export default function KeuanganPage() {
   return (

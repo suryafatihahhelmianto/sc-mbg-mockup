@@ -26,7 +26,9 @@ import AkuntanPage from "./pages/akuntan/page";
 import AkuntanOrderToPO from "./pages/akuntan/order-to-po/page";
 // Akuntan bookkeeping route now redirects to /keuangan
 import AkuntanStock from "./pages/akuntan/stock/page";
-import KeuanganPage from "./pages/keuangan/page";
+import KeuanganPage from "./pages/akuntan/keuangan/page";
+import AslapPage from "./pages/aslap/page";
+import PenerimaManfaatPage from "./pages/penerima-manfaat/page";
 import "./App.css";
 
 function App() {
@@ -54,6 +56,8 @@ function App() {
               element={<DapurNutritionCalc />}
             />
             <Route path="/dapur/po" element={<DapurPO />} />
+            <Route path="/aslap" element={<AslapPage />} />
+            <Route path="/penerima-manfaat" element={<PenerimaManfaatPage />} />
             <Route path="/akuntan" element={<AkuntanPage />} />
             <Route path="/akuntan/order-to-po" element={<AkuntanOrderToPO />} />
             <Route
